@@ -45,7 +45,8 @@ tags:
 
 编辑`Android.mk`文件：
 
-<pre><code>LOCAL_PATH  := $(call my-dir)
+```mk
+LOCAL_PATH  := $(call my-dir)
 OPENCV_PATH := F:\opencv-2.4.13.6-android-sdk\OpenCV-android-sdk\sdk\native\jni
 
 include $(CLEAR_VARS)
@@ -67,15 +68,16 @@ LOCAL_CFLAGS := -Werror -O3 -ffast-math
 LOCAL_LDLIBS := -llog -ldl
 
 include $(BUILD_SHARED_LIBRARY)
-</code></pre>
+```
 
 编辑`Application.mk`文件：
 
-<pre><code>APP_STL := gnustl_shared
+```mk
+APP_STL := gnustl_shared
 APP_CPPFLAGS := -std=c++11 -frtti -fexceptions
 APP_ABI := armeabi,armeabi-v7a,mips,x86
 APP_PLATFORM := android-21
-</code></pre>
+```
 
 6.完成上面的步骤后，就可以使用命令行工具进入`F:/opencv-2.4.13.6-android-sdk/OpenCV-android-sdk/sdk/native/jni/include/libnonfree`文件夹，再使用`ndk-build`命令，如遇到“‘ndk-build’不是内部或外部命令，也不是可运行的程序或批处理文件”，请检查下载ndk-bundle工具并在环境变量中配置好ndk-build
 
@@ -102,14 +104,15 @@ APP_PLATFORM := android-21
 
 2.在文件夹中新建一个.cpp文件，例如`test.cpp`
 
-<pre><code>#include &lt;jni.h&gt;
-#include &lt;android/log.h&gt;
+```c
+#include <jni.h>
+#include <android/log.h>
 
-#include &lt;opencv2/core/core.hpp&gt;
-#include &lt;opencv2/highgui/highgui.hpp&gt;
-#include &lt;opencv2/nonfree/features2d.hpp&gt;
-#include &lt;opencv2/nonfree/nonfree.hpp&gt;
-#include &lt;iostream&gt;
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/nonfree/features2d.hpp>
+#include <opencv2/nonfree/nonfree.hpp>
+#include <iostream>
 
 using namespace cv;
 using namespace std;
@@ -176,7 +179,7 @@ int run_demo()
     LOGI("完成\n");
     return 0;
 }
-</code></pre>
+```
 
 **注意其中的方法名`Java_com_zzapp_nonfree_MainActivity_runDemo`，你需要将其中的`com_zzapp_nonfree_MainActivity`更改为你的包名加上使用方法的Activity名（包名在后面的使用中应用到，应提前想好）**
 
@@ -186,7 +189,8 @@ int run_demo()
 
 编辑`Android.mk`文件：
 
-<pre><code>LOCAL_PATH  := $(call my-dir)
+```mk
+LOCAL_PATH  := $(call my-dir)
 OPENCV_PATH := F:\opencv-2.4.13.6-android-sdk\OpenCV-android-sdk\sdk\native\jni
 
 include $(CLEAR_VARS)
@@ -212,15 +216,16 @@ LOCAL_LDLIBS := -llog -ldl
 LOCAL_SHARED_LIBRARIES += nonfree
 
 include $(BUILD_SHARED_LIBRARY)
-</code></pre>
+```
 
 编辑`Application.mk`文件：
 
-<pre><code>APP_STL := gnustl_shared
+```mk
+APP_STL := gnustl_shared
 APP_CPPFLAGS := -std=c++11 -frtti -fexceptions
 APP_ABI := armeabi
 APP_PLATFORM := android-21
-</code></pre>
+```
 
 4.同上，使用命令行工具进入`F:/opencv-2.4.13.6-android-sdk/OpenCV-android-sdk/sdk/native/jni/include/libnonfree_demo`文件夹，再使用`ndk-build`命令，成功后，在`libnonfree_demo/libs/armeabi`里生成了几个.so文件，包括一个`libnonfree_demo.so`文件
 
@@ -248,7 +253,8 @@ APP_PLATFORM := android-21
 
 4.修改`MainActivity`文件
 
-<pre><code>package com.zzapp.nonfree
+```kotlin
+package com.zzapp.nonfree
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -281,13 +287,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-</code></pre>
+```
 
 5.构建前的最后一步，添加权限。因为在`test.cpp`中，我们有读写外部文件的操作，所以应在`AndroidManifest.xml`文件中添加两条权限
 
-<pre><code>&lt;uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/&gt;
-&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/&gt;
-</code></pre>
+```xml
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+```
 
 在手机`/sdcard/nonfree`目录下新建文件`image.jpg`，打包运行应用。成功！！
 

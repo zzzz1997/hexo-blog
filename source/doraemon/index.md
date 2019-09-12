@@ -1,6 +1,7 @@
 ---
 title: doraemon
 date: 2019-09-11 14:20:56
+cover: https://vignette.wikia.nocookie.net/doraemon/images/e/e5/%E7%AB%B9%E8%9C%BB%E8%9C%93%283D%E7%89%88%29.jpg/revision/latest/scale-to-width-down/175?cb=20170201124437&path-prefix=zh-tw
 ---
 
 **[全部哆啦A梦](/tags/doraemon)**

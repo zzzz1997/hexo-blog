@@ -21,7 +21,8 @@ In fact, **an object is just a data type with a single implementation.** So if w
 
 Singleton in Java isn’t as easy to implement as it sounds. One might think it’s as simple as this:
 
-<pre><code>public class Singleton {
+```kotlin
+public class Singleton {
 
     private Singleton() {
     }
@@ -36,12 +37,12 @@ Singleton in Java isn’t as easy to implement as it sounds. One might think it�
         return instance;
     }
 }
-</code></pre>
-
+```
 
 But this code is dangerous, especially if it’s used in different threads. If two threads access this singleton at a time, **two instances of this object could be generated.** A safer code would be:
 
-<pre><code>public class Singleton {
+```kotlin
+public class Singleton {
 
     private static Singleton instance = null;
 
@@ -59,16 +60,15 @@ But this code is dangerous, especially if it’s used in different threads. If t
         return instance;
     }
 }
-</code></pre>
-
+```
 
 As you can see, you need a few lines to create a valid Singleton.
 
 What would be the equivalent in **Kotlin**?
 
-<pre><code>object Singleton
-</code></pre>
-
+```kotlin
+object Singleton
+```
 
 You don’t need more. You could use the *Show bytecode* tool you can find at *Tools -> Kotlin*, and then use the *Decompile* option. That way, you can see what’s the implementation that the Kotlin team decided to use for singletons.
 
@@ -80,7 +80,8 @@ Declaring an object is as simple as declaring a class.
 
 Let’s declare for example an object that implements a database helper:
 
-<pre><code>object MySQLOpenHandler : SQLiteOpenHelper(App.instance, "MyDB", null, 1) {
+```kotlin
+object MySQLOpenHandler : SQLiteOpenHelper(App.instance, "MyDB", null, 1) {
 
     override fun onCreate(db: SQLiteDatabase?) {
     }
@@ -88,7 +89,7 @@ Let’s declare for example an object that implements a database helper:
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
     }
 }
-</code></pre>
+```
 
 As you can see, you just need to use the reserved word `object` instead of `class` and the rest is the same. Just take into account that **objects can’t have a constructor**, as we don’t call any constructors to access to them.
 
@@ -100,7 +101,8 @@ Every class can implement a companion object, which is an object that is common 
 
 An implementation example:
 
-<pre><code>class App : Application() {
+```kotlin
+class App : Application() {
     companion object {
         lateinit var instance: App
             private set
@@ -111,7 +113,7 @@ An implementation example:
         instance = this
     }
 }
-</code></pre>
+```
 
 In this case I’m creating a class that extends `Application` and stores it in the `companion object` its unique instance.
 
@@ -127,7 +129,8 @@ Objects can also be used to create anonymous class implementations.
 
 An example:
 
-<pre><code>recycler.adapter = object : RecyclerView.Adapter() {
+```kotlin
+recycler.adapter = object : RecyclerView.Adapter() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
     }
 
@@ -138,19 +141,20 @@ An example:
     }
 
 }
-</code></pre>
+```
 
 Every time you want to create an inline implementation of an interface, for instance, or extend another class, you’ll use the above notation.
 
 But an object can also represent a class that doesn’t exist. You can create it on the fly:
 
-<pre><code>val newObj = object {
+```kotlin
+val newObj = object {
     var x = "a"
     var y = "b"
 }
- 
+
 Log.d(tag, "x:${newObj.x}, y:${newObj.y}")
-</code></pre>
+```
 
 ## Conclusion
 
