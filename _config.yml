@@ -15,6 +15,7 @@ timezone: UTC
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://zzzz1997.github.io
 root: /
+# permalink: :title
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -78,3 +79,15 @@ deploy:
   type: git
   repo: https://github.com/zzzz1997/zzzz1997.github.io.git
   branch: master
+
+live2d:
+  enable: true
+  pluginModelPath: assets/
+  model:
+    use: live2d-widget-model-tororo
+  display:
+    position: right
+    width: 150 
+    height: 300
+  mobile:
+    show: false

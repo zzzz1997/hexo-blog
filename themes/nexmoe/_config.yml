@@ -90,13 +90,13 @@ comment: gitalk # 评论框，目前支持 gitalk,gitment,valine,disqus,disqusjs
 gitalk:
   admin: zzzz1997 # 拥有对该repo进行操作的 GitHub username
   owner: zzzz1997 # 持有该 repo 的 GitHub username
-  repo: https://zzzz1997.github.io # 存放评论的 issue 所在的 repo
+  repo: zzzz1997.github.io # 存放评论的 issue 所在的 repo
   clientID: e82953329a9ceaa29251 # GitHub Client ID
   clientSecret: c5158215bcc0ef469e83844c5f312a9a54cc00d2 # GitHub Client Secret
 
 gitment:
   owner: zzzz1997 # 持有该 repo 的 GitHub username
-  repo: https://zzzz1997.github.io # 存放评论的 issue 所在的 repo
+  repo: zzzz1997.github.io # 存放评论的 issue 所在的 repo
   clientID: e82953329a9ceaa29251 # GitHub Client ID
   clientSecret: c5158215bcc0ef469e83844c5f312a9a54cc00d2 # GitHub Client Secret
 
