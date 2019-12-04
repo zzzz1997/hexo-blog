@@ -5,7 +5,7 @@ date: 2019-09-11 10:54:25
 cover: http://qiniu.zzzz1997.com/objects-kotlin/objects-kotlin.jpg
 categories: 
 - 技术
-tags: kotlin
+tags: Kotlin
 ---
 
 by Antonio Leiva

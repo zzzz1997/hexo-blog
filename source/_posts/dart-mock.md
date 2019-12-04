@@ -4,7 +4,7 @@ date: 2019-09-12 11:04:58
 cover: http://qiniu.zzzz1997.com/c83d70cf3bc79f3d068c6661b6a1cd11728b2976.png
 categories: 
 - 技术
-tags: dart
+tags: Dart
 ---
 
 A dart library that mimics [mockjs](http://mockjs.com/).
